@@ -5,7 +5,7 @@ import (
 )
 
 func Example() {
-	// Build an ascii hexagon
+	// Build an ascii hexagon using strings.
 	hexagonString := `***>-----<***` + "\n"
 	hexagonString += `**/       \**` + "\n"
 	hexagonString += `*/         \*` + "\n"
@@ -13,10 +13,15 @@ func Example() {
 	hexagonString += `*\         /*` + "\n"
 	hexagonString += `**\       /**` + "\n"
 	hexagonString += `***>-----<***`
+
+	// The string is parsed into a new canvase.
+	// The second paramater is used to specify transparency.
 	hexagon := NewCanvasFromString(hexagonString, '*')
 
-	// Compose multiple hexagons onto a board
+	// Created a larger canvas that is completely filled with '~' runes.
 	board := NewFill(31, 21, '~')
+
+	// Arrange multiple hexagons onto the new canvas.
 	board.Compose(0, 4, hexagon)
 	board.Compose(0, 10, hexagon)
 	board.Compose(9, 1, hexagon)
@@ -25,7 +30,7 @@ func Example() {
 	board.Compose(18, 4, hexagon)
 	board.Compose(18, 10, hexagon)
 
-	// print the board
+	// Print the board
 	fmt.Print(board)
 
 	// Output: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
